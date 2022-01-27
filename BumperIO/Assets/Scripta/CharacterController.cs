@@ -12,7 +12,7 @@ public class CharacterController : MonoBehaviour
     public bool isToBeDestroyed = false;
 
     [SerializeField] int sizeIncreaser = 1;
-    [SerializeField] int massIncreaser = 10;
+    [SerializeField] int massIncreaser = 2;
     Rigidbody charRb;
     bool once;
     CameraController camera;
@@ -23,7 +23,7 @@ public class CharacterController : MonoBehaviour
     {
         once = true;
         charRb = GetComponent<Rigidbody>();
-        camera = Camera.main.GetComponent<CameraController>();
+        camera = Camera.main.transform.parent.GetComponent<CameraController>();
     }
 
     // Update is called once per frame
@@ -57,7 +57,7 @@ public class CharacterController : MonoBehaviour
     }
     void IncreaseForce()
     {
-        moveSpeed += 50;
+        moveSpeed += 1000;
     }
     void ChangeTexture()
     {
@@ -87,7 +87,7 @@ public class CharacterController : MonoBehaviour
 
     void DestroyMe()
     {
-        int i = camera.target.IndexOf(this.gameObject);
+        int i = camera.target.IndexOf(this.gameObject.transform);
         camera.target.RemoveAt(i);
         Destroy(this.gameObject);
     }

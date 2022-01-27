@@ -31,7 +31,7 @@ public class SpawnManager : MonoBehaviour
     void SpawnEnemy()
     {
         GameObject spawnedObject = Instantiate(enemyPrefab, SpawnPosition(), Quaternion.identity);
-        camera.GetComponent<CameraController>().target.Add(spawnedObject);
+        camera.GetComponent<CameraController>().target.Add(spawnedObject.transform);
     }
 
     Vector3 SpawnPosition()
